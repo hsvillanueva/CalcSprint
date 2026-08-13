@@ -74,8 +74,7 @@ h3,
   position: sticky;
   top: 0;
   z-index: 20;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
   min-height: 64px;
   padding: 0 24px;
@@ -84,46 +83,20 @@ h3,
   backdrop-filter: blur(18px);
 }
 
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--text-primary);
-  font-size: 17px;
-  font-weight: 700;
-}
-
-.brand-mark {
-  display: inline-grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border: 1px solid rgba(153, 238, 221, 0.42);
-  border-radius: 8px;
-  background: rgba(153, 238, 221, 0.09);
-  color: var(--accent);
-  font-weight: 800;
-}
-
 .home-button {
-  justify-self: start;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   min-height: 40px;
-  padding: 0 12px;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-control);
-  background: rgba(255, 255, 255, 0.04);
+  padding: 0;
+  background: transparent;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background-color 180ms ease;
+  transition: transform 180ms ease, color 180ms ease;
 }
 
 .home-button:hover,
 .home-button:focus-visible {
-  border-color: var(--border-strong);
-  background: rgba(153, 238, 221, 0.08);
   color: var(--accent);
   outline: 0;
 }
@@ -150,17 +123,13 @@ h3,
 .view-menu {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .menu-layout {
-  display: grid;
-  grid-template-columns: minmax(280px, 0.88fr) minmax(360px, 1.12fr);
-  align-items: stretch;
-  width: 100%;
-  gap: 22px;
+  width: min(720px, 100%);
 }
 
-.intro-panel,
 .settings-panel,
 .answer-panel,
 .results-panel {
@@ -169,53 +138,6 @@ h3,
   background: rgba(23, 23, 23, 0.72);
   box-shadow: var(--shadow);
   backdrop-filter: blur(14px);
-}
-
-.intro-panel {
-  position: relative;
-  min-height: 520px;
-  overflow: hidden;
-  background:
-    linear-gradient(135deg, rgba(153, 238, 221, 0.16), rgba(23, 23, 23, 0.66)),
-    var(--bg-elevated);
-}
-
-.intro-panel::before {
-  content: "";
-  position: absolute;
-  inset: 24px;
-  border: 1px solid rgba(153, 238, 221, 0.22);
-  border-radius: 8px;
-}
-
-.speed-grid {
-  position: absolute;
-  inset: 48px 34px;
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  gap: 14px;
-}
-
-.speed-grid span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  background: rgba(10, 10, 10, 0.5);
-  color: var(--text-primary);
-  font-family: Poppins, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: clamp(24px, 3.6vw, 44px);
-  font-weight: 800;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
-}
-
-.speed-grid span:nth-child(odd) {
-  color: var(--add);
-}
-
-.speed-grid span:nth-child(even) {
-  color: var(--sub);
 }
 
 .settings-panel {
@@ -568,11 +490,8 @@ h3,
 
 .flash-item {
   max-width: min(100%, 1100px);
-  padding: 22px 30px;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-card);
-  background: rgba(23, 23, 23, 0.72);
-  box-shadow: var(--shadow);
+  padding: 0;
+  background: transparent;
   font-family: Poppins, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: clamp(54px, 11vw, 150px);
   font-weight: 800;
@@ -585,12 +504,10 @@ h3,
 
 .flash-item.add {
   color: var(--add);
-  border-color: rgba(168, 245, 190, 0.22);
 }
 
 .flash-item.sub {
   color: var(--sub);
-  border-color: rgba(255, 173, 173, 0.22);
 }
 
 .progress-text {
@@ -629,8 +546,12 @@ h3,
 
 .button-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
+}
+
+.button-row .primary-button {
+  grid-column: 1 / -1;
 }
 
 .results-panel {
@@ -768,24 +689,6 @@ h3,
 
   .view {
     min-height: calc(100vh - 112px);
-  }
-
-  .menu-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .intro-panel {
-    min-height: 190px;
-  }
-
-  .intro-panel::before {
-    inset: 14px;
-  }
-
-  .speed-grid {
-    inset: 28px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
   }
 
   .button-row,

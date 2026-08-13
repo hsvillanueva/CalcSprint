@@ -33,8 +33,8 @@
   const correctTotalEl = $("#correctTotal");
 
   const ACCOUNTANCY = {
-    min: 100000,
-    max: 9999750,
+    min: 10000,
+    max: 1000000,
     endings: [0, 250, 500, 750],
   };
 

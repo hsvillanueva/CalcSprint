@@ -14,32 +14,13 @@
         <span aria-hidden="true">&lt;</span>
         <span>Home</span>
       </button>
-
-      <div class="brand" aria-label="CalcSprint">
-        <span class="brand-mark" aria-hidden="true">CS</span>
-        <span>CalcSprint</span>
-      </div>
-
-      <div class="topbar-spacer" aria-hidden="true"></div>
     </header>
 
     <main id="app" class="stage">
       <section id="menu" class="view view-menu" aria-labelledby="menuTitle">
         <div class="menu-layout">
-          <div class="intro-panel" aria-hidden="true">
-            <div class="speed-grid">
-              <span>+ 48,250</span>
-              <span>- 17,000</span>
-              <span>+ 625,750</span>
-              <span>- 94,500</span>
-            </div>
-          </div>
-
           <form id="settingsForm" class="settings-panel" novalidate>
-            <div class="panel-heading">
-              <p class="eyebrow">Mental math sprint</p>
-              <h1 id="menuTitle">Train fast calculations</h1>
-            </div>
+            <h1 id="menuTitle" class="sr-only">Calculation settings</h1>
 
             <fieldset class="control-group">
               <legend>Operation mode</legend>
@@ -88,7 +69,7 @@
                 <span class="switch-label">Accountancy mode</span>
                 <button class="info-dot" type="button" aria-describedby="accountancyTooltip" aria-label="What is accountancy mode?">?</button>
                 <span id="accountancyTooltip" class="tooltip" role="tooltip">
-                  Accountancy mode locks numbers to 5-7 digits and endings of 000, 250, 500, or 750.
+                  Accountancy mode uses 10,000 to 1,000,000 and sets the last three digits to 000, 250, 500, or 750.
                 </span>
               </div>
               <label class="switch">
@@ -114,7 +95,6 @@
       <section id="answerScreen" class="view view-answer hidden" aria-labelledby="answerTitle">
         <div class="answer-panel">
           <div class="panel-heading compact">
-            <p class="eyebrow">Round complete</p>
             <h2 id="answerTitle">Enter your answer</h2>
           </div>
 
@@ -134,7 +114,6 @@
       <section id="results" class="view view-results hidden" aria-labelledby="resultTitle">
         <div class="results-panel">
           <div class="result-banner">
-            <p class="eyebrow">Results</p>
             <h2 id="resultTitle">Correct</h2>
             <p id="resultSummary" class="result-summary"></p>
           </div>
