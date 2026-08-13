@@ -427,11 +427,8 @@
     resultBanner.classList.toggle("correct", correct);
     resultBanner.classList.toggle("wrong", !correct);
     resultTitle.textContent = correct ? "Correct answer" : "Wrong answer";
-    resultSummary.textContent = correct
-      ? "You got the total exactly right."
-      : skipped
-        ? "Skipped round. Here is the full calculation."
-        : "That total was off. Here is the full calculation.";
+    // Remove flavor/summary text per UI update request
+    resultSummary.textContent = "";
     correctTotalEl.textContent = formatNumber(correctTotal);
     renderEquation();
     showView("results");
