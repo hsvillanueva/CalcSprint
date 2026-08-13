@@ -34,7 +34,7 @@
 
   const ACCOUNTANCY = {
     min: 10000,
-    max: 1000000,
+    max: 9999750,
     endings: [0, 250, 500, 750],
   };
 
@@ -51,6 +51,10 @@
       view.classList.toggle("hidden", key !== name);
     });
     document.body.dataset.view = name;
+    // hide home button while on the menu/settings screen
+    if (homeBtn) {
+      homeBtn.style.display = name === "menu" ? "none" : "";
+    }
   }
 
   function setTimer(callback, delay) {
