@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CalcSprint is a static fast mental calculation trainer for addition and subtraction drills.">
+  <title>CalcSprint - Fast Calculation Trainer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button id="homeBtn" class="home-button" type="button" aria-label="Return to start menu">
+        <span aria-hidden="true">&lt;</span>
+        <span>Home</span>
+      </button>
+
+      <div class="brand" aria-label="CalcSprint">
+        <span class="brand-mark" aria-hidden="true">CS</span>
+        <span>CalcSprint</span>
+      </div>
+
+      <div class="topbar-spacer" aria-hidden="true"></div>
+    </header>
+
+    <main id="app" class="stage">
+      <section id="menu" class="view view-menu" aria-labelledby="menuTitle">
+        <div class="menu-layout">
+          <div class="intro-panel" aria-hidden="true">
+            <div class="speed-grid">
+              <span>+ 48,250</span>
+              <span>- 17,000</span>
+              <span>+ 625,750</span>
+              <span>- 94,500</span>
+            </div>
+          </div>
+
+          <form id="settingsForm" class="settings-panel" novalidate>
+            <div class="panel-heading">
+              <p class="eyebrow">Mental math sprint</p>
+              <h1 id="menuTitle">Train fast calculations</h1>
+            </div>
+
+            <fieldset class="control-group">
+              <legend>Operation mode</legend>
+              <div class="segmented-control" role="radiogroup" aria-label="Operation mode">
+                <label>
+                  <input type="radio" name="mode" value="add" checked>
+                  <span>Addition</span>
+                </label>
+                <label>
+                  <input type="radio" name="mode" value="sub">
+                  <span>Subtraction</span>
+                </label>
+                <label>
+                  <input type="radio" name="mode" value="both">
+                  <span>Both</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="control-group">
+              <div class="label-row">
+                <label for="speed">Flash speed</label>
+                <output id="speedVal" for="speed">0.80s</output>
+              </div>
+              <input id="speed" class="range-slider" type="range" min="200" max="2000" step="50" value="800">
+              <div class="scale-row" aria-hidden="true">
+                <span>0.20s</span>
+                <span>2.00s max</span>
+              </div>
+            </div>
+
+            <div class="control-grid">
+              <div class="control-group">
+                <label for="range">Number range</label>
+                <input id="range" class="text-input" type="text" inputmode="numeric" value="100000-1000000" placeholder="100000-1000000" autocomplete="off">
+              </div>
+
+              <div class="control-group">
+                <label for="count">Numbers to flash</label>
+                <input id="count" class="text-input" type="number" min="1" max="120" value="10" inputmode="numeric">
+              </div>
+            </div>
+
+            <div class="switch-row">
+              <div class="switch-copy">
+                <span class="switch-label">Accountancy mode</span>
+                <button class="info-dot" type="button" aria-describedby="accountancyTooltip" aria-label="What is accountancy mode?">?</button>
+                <span id="accountancyTooltip" class="tooltip" role="tooltip">
+                  Accountancy mode locks numbers to 5-7 digits and endings of 000, 250, 500, or 750.
+                </span>
+              </div>
+              <label class="switch">
+                <input id="accountancy" type="checkbox">
+                <span class="switch-track" aria-hidden="true"></span>
+                <span class="sr-only">Enable accountancy mode</span>
+              </label>
+            </div>
+
+            <p id="formError" class="form-error" role="alert" aria-live="polite"></p>
+
+            <button id="start" class="primary-button" type="submit">Start round</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="game" class="view view-game hidden" aria-live="polite" aria-label="Calculation round">
+        <div id="countdown" class="countdown">Ready</div>
+        <div id="flashArea" class="flash-area" aria-live="assertive"></div>
+        <div id="progressText" class="progress-text"></div>
+      </section>
+
+      <section id="answerScreen" class="view view-answer hidden" aria-labelledby="answerTitle">
+        <div class="answer-panel">
+          <div class="panel-heading compact">
+            <p class="eyebrow">Round complete</p>
+            <h2 id="answerTitle">Enter your answer</h2>
+          </div>
+
+          <form id="answerForm" class="answer-form">
+            <label for="answer" class="sr-only">Your answer</label>
+            <input id="answer" class="answer-input" type="number" inputmode="numeric" placeholder="Total">
+            <p id="answerHint" class="answer-hint" aria-live="polite"></p>
+            <div class="button-row">
+              <button id="checkAnswer" class="primary-button" type="submit">Check answer</button>
+              <button id="restart" class="secondary-button" type="button">Replay same round</button>
+              <button id="skip" class="ghost-button" type="button">Skip to results</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="results" class="view view-results hidden" aria-labelledby="resultTitle">
+        <div class="results-panel">
+          <div class="result-banner">
+            <p class="eyebrow">Results</p>
+            <h2 id="resultTitle">Correct</h2>
+            <p id="resultSummary" class="result-summary"></p>
+          </div>
+
+          <div id="equation" class="equation" aria-label="Round numbers"></div>
+
+          <div class="total-row">
+            <span>Answer</span>
+            <strong id="correctTotal">0</strong>
+          </div>
+
+          <button id="toMenu" class="primary-button" type="button">Return to start menu</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
