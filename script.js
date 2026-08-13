@@ -195,7 +195,7 @@
       accountancy,
       range,
       count,
-      speed: Math.min(Math.max(speed, 200), 2000),
+      speed: Math.min(Math.max(speed, 200), 3000),
     };
   }
 
