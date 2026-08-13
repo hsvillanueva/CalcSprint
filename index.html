@@ -23,7 +23,7 @@
             <h1 id="menuTitle" class="sr-only">Calculation settings</h1>
 
             <fieldset class="control-group">
-              <legend>Operation mode</legend>
+              <legend>Operations</legend>
               <div class="segmented-control" role="radiogroup" aria-label="Operation mode">
                 <label>
                   <input type="radio" name="mode" value="add" checked>
@@ -48,25 +48,25 @@
               <input id="speed" class="range-slider" type="range" min="200" max="2000" step="50" value="800">
               <div class="scale-row" aria-hidden="true">
                 <span>0.20s</span>
-                <span>2.00s max</span>
+                <span>2.00s</span>
               </div>
             </div>
 
             <div class="control-grid">
               <div class="control-group">
-                <label for="range">Number range</label>
+                <label for="range">Range of Numbers</label>
                 <input id="range" class="text-input" type="text" inputmode="numeric" value="100000-1000000" placeholder="100000-1000000" autocomplete="off">
               </div>
 
               <div class="control-group">
-                <label for="count">Numbers to flash</label>
+                <label for="count">Flash Count</label>
                 <input id="count" class="text-input" type="number" min="1" max="120" value="10" inputmode="numeric">
               </div>
             </div>
 
             <div class="switch-row">
               <div class="switch-copy">
-                <span class="switch-label">Accountancy mode</span>
+                <span class="switch-label">Accountancy Mode</span>
                 <button class="info-dot" type="button" aria-describedby="accountancyTooltip" aria-label="What is accountancy mode?">?</button>
                 <span id="accountancyTooltip" class="tooltip" role="tooltip">
                   Accountancy mode uses 10,000 to 9,999,750 and sets the last three digits to 000, 250, 500, or 750.
@@ -115,12 +115,14 @@
         <div class="results-panel">
           <div class="result-banner">
             <h2 id="resultTitle">Correct</h2>
-            <p id="resultSummary" class="result-summary"></p>
           </div>
 
-          <div id="equation" class="equation" aria-label="Round numbers"></div>
+          <div class="result-value-row user-answer-row">
+            <span>Your input</span>
+            <strong id="submittedAnswer">Skipped</strong>
+          </div>
 
-          <div class="total-row">
+          <div class="result-value-row answer-row">
             <span>Answer</span>
             <strong id="correctTotal">0</strong>
           </div>

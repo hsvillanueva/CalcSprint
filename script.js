@@ -28,8 +28,7 @@
   const toMenuBtn = $("#toMenu");
   const resultBanner = $(".result-banner");
   const resultTitle = $("#resultTitle");
-  const resultSummary = $("#resultSummary");
-  const equationEl = $("#equation");
+  const submittedAnswerEl = $("#submittedAnswer");
   const correctTotalEl = $("#correctTotal");
 
   const ACCOUNTANCY = {
@@ -398,26 +397,7 @@
     answerInput.focus({ preventScroll: true });
   }
 
-  function renderEquation() {
-    equationEl.className = "equation";
-    if (state.sequence.length > 36) {
-      equationEl.classList.add("compact");
-    }
-    if (state.sequence.length > 72) {
-      equationEl.classList.add("dense");
-    }
-
-    const nodes = state.sequence.map((item) => {
-      const chip = document.createElement("span");
-      chip.className = `op-chip ${item.op}`;
-      chip.textContent = `${item.op === "add" ? "+" : "-"} ${formatNumber(item.value)}`;
-      return chip;
-    });
-
-    equationEl.replaceChildren(...nodes);
-  }
-
-  function showResults(status) {
+  function showResults(status, submittedValue = null) {
     clearTimers();
 
     const correctTotal = totalFor();
@@ -427,10 +407,8 @@
     resultBanner.classList.toggle("correct", correct);
     resultBanner.classList.toggle("wrong", !correct);
     resultTitle.textContent = correct ? "Correct answer" : "Wrong answer";
-    // Remove flavor/summary text per UI update request
-    resultSummary.textContent = "";
+    submittedAnswerEl.textContent = skipped ? "Skipped" : formatNumber(submittedValue);
     correctTotalEl.textContent = formatNumber(correctTotal);
-    renderEquation();
     showView("results");
   }
 
@@ -449,7 +427,7 @@
       return;
     }
 
-    showResults(userAnswer === totalFor() ? "correct" : "wrong");
+    showResults(userAnswer === totalFor() ? "correct" : "wrong", userAnswer);
   }
 
   function returnHome() {
