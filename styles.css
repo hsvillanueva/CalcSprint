@@ -295,10 +295,10 @@ h3,
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 14px;
-  border: 1px solid var(--border-subtle);
+  padding: 8px 0;
+  border: none; /* removed thin box */
   border-radius: var(--radius-card);
-  background: rgba(255, 255, 255, 0.035);
+  background: transparent;
 }
 
 .switch-copy {
