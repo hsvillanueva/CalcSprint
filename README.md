@@ -7,3 +7,5 @@ Funny fast calculation game to practice mental math and quick calculator usage. 
 I was not paid to do this.
 
 ## grass grass grass grass grass
+
+test
